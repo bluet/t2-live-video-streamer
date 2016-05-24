@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>stream</title>
+		<script src="//cdn.jsdelivr.net/sockjs/1.0.1/sockjs.min.js"></script>
+	</head>
+	<body>
+		<canvas id="output" width="320" height="240" style="border:solid;"></canvas>
+		<script>
+			window.onload = function() {
+				var context = document.getElementById("output").getContext("2d");
+				var sock = new SockJS('http://tessel.local:8080/vstream');
+				var frame = null;
+				
+				sock.onopen = function() {
+					console.log('open');
+					sock.send('test');
+				};
+				
+				sock.onmessage = function(encoded) {
+					var image = new Image();
+					frame = "data:image/jpeg;base64," + encoded.data;
+					//~ console.log('message', encoded.data);
+					console.log('.');
+					
+					image.src = frame;
+					try {
+						context.drawImage(image, 0, 0);
+					} catch (e) {
+						console.log("drawImage Error! ", e);
+					}
+				};
+				
+				sock.onclose = function() {
+					console.log('close');
+				};
+				
+			      //~ setInterval(() => {
+			        //~ if (frame) {
+			          //~ var image = new Image();
+			          //~ image.src = frame;
+			          //~ try {
+			            //~ context.drawImage(image, 0, 0);
+			          //~ } catch (e) {
+			            //~ console.log("drawImage Error! ", e);
+			          //~ }
+			        //~ }
+			      //~ }, 1000 / 24);
+			};
+		</script>    
+	</body>
+</html>

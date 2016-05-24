@@ -1,0 +1,31 @@
+{
+  "name": "t2-live-video-streamer",
+  "version": "1.0.0",
+  "description": "Live Video Streamer for Tessel 2, with USB camera (webcam)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BlueT/t2-live-video-streamer.git"
+  },
+  "keywords": [
+    "tessel",
+    "video",
+    "live",
+    "stream",
+    "camera"
+  ],
+  "author": "BlueT - Matthew Lien - 練喆明 <BlueT@BlueT.org> (http://BlueT.org)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/BlueT/t2-live-video-streamer/issues"
+  },
+  "homepage": "https://github.com/BlueT/t2-live-video-streamer#readme",
+  "dependencies": {
+    "express": "^4.13.4",
+    "sockjs": "^0.3.17",
+    "tessel-av": "^0.6.0"
+  }
+}
