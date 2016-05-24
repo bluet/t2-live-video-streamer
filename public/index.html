@@ -10,7 +10,7 @@
 		<script>
 			window.onload = function() {
 				var context = document.getElementById("output").getContext("2d");
-				var sock = new SockJS('http://tessel.local:8080/vstream');
+				var sock = new SockJS(location.host + '/vstream');
 				var frame = null;
 				
 				sock.onopen = function() {
